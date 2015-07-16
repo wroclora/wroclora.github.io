@@ -45,6 +45,16 @@ var infowindow = new google.maps.InfoWindow({});
 
 function setGateway(map)  {
   var myLatLng =  new google.maps.LatLng(gateway[1], gateway[2]);
+    var strengthOptions = {
+      strokeColor: '#0000FF',
+      strokeOpacity: 0.8,
+      strokeWeight: 1,
+      fillColor: '#0000FF',
+      fillOpacity: 0.35,
+      map: map,
+      center: myLatLng,
+      radius: 1000
+    };
   var locationOptions = {
       strokeColor: '#0000FF',
       fillColor: '#0000FF',
@@ -53,9 +63,10 @@ function setGateway(map)  {
       center: myLatLng,
       radius: 6
     };
+  strengthCircle = new google.maps.Circle(strengthOptions);
   locationCircle = new google.maps.Circle(locationOptions);
   var contentString = "name: Gateway";
-  google.maps.event.addListener(locationCircle, 'mouseover', function() {
+  google.maps.event.addListener(strengthCircle, 'mouseover', function() {
     infowindow.setContent(contentString);
     infowindow.setPosition(this.center);
     infowindow.open(map,this);
