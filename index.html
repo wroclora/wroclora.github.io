@@ -52,7 +52,7 @@ function setMarkers(map, locations) {
       fillOpacity: 0.35,
       map: map,
       center: myLatLng,
-      radius: Math.sqrt((200-Math.abs(node[3])))*100
+      radius: (200-Math.abs(node[3]))*100
     };
     var locationOptions = {
       strokeColor: '#000000',
