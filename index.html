@@ -63,8 +63,16 @@ function setMarkers(map, locations) {
       center: myLatLng,
       radius: 2
       }
+    var contentString = "name: "+node[0]+"\n"+"RSSI: "+node[3].toString();
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
     strengthCircle = new google.maps.Circle(strengthOptions);
     locationCircle = new google.maps.Circle(locationOptions);
+    google.maps.event.addListener(strengthCircle, 'mouseover', function() {
+      infowindow.open(map,strengthCircle);
+  });
+
   }
 }
 
