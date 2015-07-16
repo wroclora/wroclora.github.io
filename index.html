@@ -28,7 +28,7 @@ function initialize() {
   setMarkers(map, nodes);
 }
 
-var gateway = ['Gateway',51.1077093,16.9703186]
+var gateway = ['Gateway',51.1077093,16.9703186];
 /**
  * Data for the markers consisting of a name, a LatLng and RSSI
  */
@@ -39,14 +39,15 @@ var nodes = [
   ['Lora4', 51.12,17.1, -60],
   ['Lora5', 50.93,16.97, -128]
 ];
-/*
+
 function info(map, marker, index) {
   var contentString = "name: "+nodes[index]node[0]+"\n"+"RSSI: "+nodes[index].node[3].toString();
   var infowindow = new google.maps.InfoWindow({
       content: contentString
   });
   infowindow.open(map,marker);
-}*/
+}
+
 function setMarkers(map, locations) {
   for (var i = 0; i < locations.length; i++) {
     var node = locations[i]
@@ -72,9 +73,9 @@ function setMarkers(map, locations) {
     };
     strengthCircle = new google.maps.Circle(strengthOptions);
     locationCircle = new google.maps.Circle(locationOptions);
-    /*google.maps.event.addListener(strengthCircle, 'mouseover', function() {
+    google.maps.event.addListener(strengthCircle, 'mouseover', function() {
       info(map,strengthCircle,i);
-    });*/
+    });
   }
 }
 
