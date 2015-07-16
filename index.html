@@ -16,9 +16,6 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
-// The following example creates complex markers to indicate beaches near
-// Sydney, NSW, Australia. Note that the anchor is set to
-// (0,32) to correspond to the base of the flagpole.
 
 function initialize() {
   var mapOptions = {
@@ -28,7 +25,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'),
                                 mapOptions);
 
-  setMarkers(map, beaches);
+  setMarkers(map, nodes);
 }
 
 /**
@@ -36,53 +33,30 @@ function initialize() {
  * the order in which these markers should display on top of each
  * other.
  */
-var beaches = [
-  ['Bondi Beach', -33.890542, 151.274856, 4],
-  ['Coogee Beach', -33.923036, 151.259052, 5],
-  ['Cronulla Beach', -34.028249, 151.157507, 3],
-  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-  ['Maroubra Beach', -33.950198, 151.259302, 1]
+var nodes = [
+  ['Lora1', -33.890542, 151.274856, -55],
+  ['Lora2', -33.923036, 151.259052, -67],
+  ['Lora3', -34.028249, 151.157507, -101],
+  ['Lora4', -33.80010128657071, 151.28747820854187, -60],
+  ['Lora5', -33.950198, 151.259302, -128]
 ];
 
 function setMarkers(map, locations) {
-  // Add markers to the map
-
-  // Marker sizes are expressed as a Size of X,Y
-  // where the origin of the image (0,0) is located
-  // in the top left of the image.
-
-  // Origins, anchor positions and coordinates of the marker
-  // increase in the X direction to the right and in
-  // the Y direction down.
-  var image = {
-    url: 'dot.png',
-    // This marker is 20 pixels wide by 32 pixels tall.
-    size: new google.maps.Size(720, 720),
-    // The origin for this image is 0,0.
-    origin: new google.maps.Point(0,0),
-    // The anchor for this image is the base of the flagpole at 0,32.
-    anchor: new google.maps.Point(360, 360)
-  };
-  // Shapes define the clickable region of the icon.
-  // The type defines an HTML &lt;area&gt; element 'poly' which
-  // traces out a polygon as a series of X,Y points. The final
-  // coordinate closes the poly by connecting to the first
-  // coordinate.
-  var shape = {
-      coords: [1, 1, 1, 20, 18, 20, 18 , 1],
-      type: 'poly'
-  };
   for (var i = 0; i < locations.length; i++) {
-    var beach = locations[i];
-    var myLatLng = new google.maps.LatLng(beach[1], beach[2]);
-    var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        icon: image,
-        shape: shape,
-        title: beach[0],
-        zIndex: beach[3]
-    });
+    var node = locations[i]
+    var myLatLng =  new google.maps.LatLng(node[1], node[2]);
+    var strengthOptions = {
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+      map: map,
+      center: myLatLng,
+      radius: Math.abs(node[2])
+    };
+    // Add the circle for this city to the map.
+    cityCircle = new google.maps.Circle(strengthOptions);
   }
 }
 
