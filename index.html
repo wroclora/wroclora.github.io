@@ -47,7 +47,7 @@ function setMarkers(map, locations) {
     var strengthOptions = {
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
-      strokeWeight: 2,
+      strokeWeight: 1,
       fillColor: '#FF0000',
       fillOpacity: 0.35,
       map: map,
@@ -55,6 +55,7 @@ function setMarkers(map, locations) {
       radius: Math.sqrt((200-Math.abs(node[3])))*100
     };
     var locationOptions = {
+      strokeColor: '#FF0000',
       fillColor: '#FF0000',
       fillOpacity: 0.8,
       map: map,
