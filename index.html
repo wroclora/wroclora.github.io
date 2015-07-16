@@ -25,6 +25,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'),
                                 mapOptions);
 
+  setGateway(map);
   setMarkers(map, nodes);
 }
 
@@ -41,6 +42,25 @@ var nodes = [
 ];
 
 var infowindow = new google.maps.InfoWindow({});
+
+function setGateway(map)  {
+  var myLatLng =  new google.maps.LatLng(gateway[1], gateway[2]);
+  var locationOptions = {
+      strokeColor: '#0000FF',
+      fillColor: '#0000FF',
+      fillOpacity: 1,
+      map: map,
+      center: myLatLng,
+      radius: 6
+    };
+  locationCircle = new google.maps.Circle(locationOptions);
+  var contentString = "name: Gateway";
+  google.maps.event.addListener(locationCircle, 'mouseover', function() {
+    infowindow.setContent(contentString);
+    infowindow.setPosition(this.center);
+    infowindow.open(map,this);
+  });
+}
 
 function setMarkers(map, locations) {
   for (var i = 0; i < locations.length; i++) {
@@ -69,10 +89,9 @@ function setMarkers(map, locations) {
 
     strengthCircle = new google.maps.Circle(strengthOptions);
     locationCircle = new google.maps.Circle(locationOptions);
-    var contentString = "name: "+node[0]+"<br>RSSI: "+node[3].toString();
     google.maps.event.addListener(strengthCircle, 'mouseover', function() {
       var contentString = "name: "+this.name+"<br>RSSI: "+this.rssi.toString();
-      infowindow.setContent(contentString)
+      infowindow.setContent(contentString);
       infowindow.setPosition(this.center);
       infowindow.open(map,this);
     });
