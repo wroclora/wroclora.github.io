@@ -52,7 +52,7 @@ function setMarkers(map, locations) {
       fillOpacity: 0.35,
       map: map,
       center: myLatLng,
-      radius: Math.sqrt((200-Math.abs(node[2])))*10
+      radius: Math.sqrt((200-Math.abs(node[3])))*100
     };
     // Add the circle for this city to the map.
     cityCircle = new google.maps.Circle(strengthOptions);
