@@ -73,7 +73,7 @@ function setMarkers(map, locations) {
     locationCircle = new google.maps.Circle(locationOptions);
     google.maps.event.addListener(strengthCircle, 'mouseover', function() {
       info(map,strengthCircle,i);
-  });
+    });
   }
 }
 
