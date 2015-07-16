@@ -54,8 +54,15 @@ function setMarkers(map, locations) {
       center: myLatLng,
       radius: Math.sqrt((200-Math.abs(node[3])))*100
     };
-    // Add the circle for this city to the map.
-    cityCircle = new google.maps.Circle(strengthOptions);
+    var locationOptions = {
+      fillColor: '#FF0000',
+      fillOpacity: 0.8,
+      map: map,
+      center: myLatLng,
+      radius: 2
+      }
+    strengthCircle = new google.maps.Circle(strengthOptions);
+    locationCircle = new google.maps.Circle(locationOptions);
   }
 }
 
