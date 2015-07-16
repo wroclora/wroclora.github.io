@@ -39,7 +39,7 @@ var nodes = [
   ['Lora4', 51.12,17.1, -60],
   ['Lora5', 50.93,16.97, -128]
 ];
-/*
+
 function info(map, marker, index) {
   var contentString = "name: "+nodes[index]node[0]+"\n"+"RSSI: "+nodes[index].node[3].toString();
   var infowindow = new google.maps.InfoWindow({
@@ -47,7 +47,7 @@ function info(map, marker, index) {
   });
   infowindow.open(map,marker);
 }
-*/
+
 function setMarkers(map, locations) {
   for (var i = 0; i < locations.length; i++) {
     var node = locations[i]
